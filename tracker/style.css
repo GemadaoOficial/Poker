@@ -1,0 +1,36 @@
+/* Tema claro padrão e uso de variáveis para alternar temas */
+:root {
+  --bg: #fff;
+  --fg: #000;
+  --accent: #c00;
+}
+body.dark {
+  --bg: #222;
+  --fg: #eee;
+  --accent: #f66;
+}
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: Arial, sans-serif;
+  margin: 0;
+}
+header {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:10px;
+  background:var(--accent);
+  color:#fff;
+}
+main { padding:10px; }
+.kpis { display:flex; flex-wrap:wrap; gap:10px; }
+.kpi { background:#f2f2f2; padding:5px 10px; border-radius:4px; }
+body.dark .kpi { background:#333; }
+section { margin-bottom:20px; }
+table { width:100%; border-collapse:collapse; }
+th,td { border:1px solid #ccc; padding:4px; text-align:left; }
+canvas { border:1px solid #ccc; margin:10px 0; }
+@media(max-width:600px){
+  .kpis{flex-direction:column;}
+}

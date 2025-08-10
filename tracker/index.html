@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Poker Tracker Offline</title>
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>Poker Tracker Offline</h1>
+  <button id="themeToggle">🌙</button>
+</header>
+<main>
+  <section id="dashboard">
+    <h2>Dashboard</h2>
+    <div class="kpis">
+      <div class="kpi">Bankroll: <span id="kpiBankroll"></span></div>
+      <div class="kpi">Lucro Total: <span id="kpiProfit"></span></div>
+      <div class="kpi">ROI: <span id="kpiROI"></span></div>
+      <div class="kpi">ITM: <span id="kpiITM"></span></div>
+      <div class="kpi">ABI Recomendado: <span id="kpiABI"></span></div>
+    </div>
+  </section>
+
+  <section id="ledger">
+    <h2>Ledger de Bankroll</h2>
+    <form id="ledgerForm">
+      <select id="ledgerType">
+        <option value="deposito">Depósito</option>
+        <option value="saque">Saque</option>
+        <option value="stake">Stake</option>
+        <option value="makeup">Makeup</option>
+        <option value="manual">Saldo Manual</option>
+      </select>
+      <input type="number" id="ledgerAmount" placeholder="Valor" required>
+      <input type="text" id="ledgerNote" placeholder="Notas">
+      <button type="submit">Adicionar</button>
+    </form>
+    <table id="ledgerTable">
+      <thead><tr><th>Data</th><th>Tipo</th><th>Valor</th><th>Notas</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </section>
+
+  <section id="tournamentForm">
+    <h2>Novo Torneio</h2>
+    <form id="tForm">
+      <input type="date" id="tDate" required>
+      <input type="time" id="tTime" required>
+      <input type="text" id="tSite" placeholder="Site" required>
+      <input type="text" id="tFormat" placeholder="Formato" required>
+      <input type="number" id="tBuyin" placeholder="Buy-in" required>
+      <input type="number" id="tFee" placeholder="Fee" value="0">
+      <input type="number" id="tRebuys" placeholder="Rebuys" value="0">
+      <input type="number" id="tAddon" placeholder="Add-on" value="0">
+      <input type="number" id="tBountyPaid" placeholder="Bounty Pago" value="0">
+      <input type="number" id="tBountyWon" placeholder="Bounty Ganho" value="0">
+      <input type="number" id="tPrize" placeholder="Premiação" value="0">
+      <input type="text" id="tNotes" placeholder="Notas">
+      <button type="submit">Salvar</button>
+    </form>
+    <div>
+      <label>Template: <select id="templateSelect"></select></label>
+      <button id="applyTemplate">Aplicar</button>
+    </div>
+  </section>
+
+  <section id="tournaments">
+    <h2>Torneios</h2>
+    <div class="filters">
+      <input type="text" id="filterSite" placeholder="Site">
+      <select id="filterITM"><option value="">ITM?</option><option value="sim">Sim</option><option value="nao">Não</option></select>
+      <button id="clearFilters">Limpar</button>
+    </div>
+    <table id="tTable">
+      <thead><tr><th data-sort="date">Data</th><th data-sort="site">Site</th><th>Stake</th><th>Formato</th><th>ITM</th><th>Lucro</th><th>Ações</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </section>
+
+  <section id="charts">
+    <h2>Gráficos</h2>
+    <canvas id="chartProfit" width="600" height="200"></canvas>
+    <canvas id="chartSite" width="300" height="200"></canvas>
+    <canvas id="chartStake" width="300" height="200"></canvas>
+    <canvas id="chartDow" width="300" height="200"></canvas>
+    <canvas id="chartHeat" width="600" height="200"></canvas>
+  </section>
+
+  <section id="io">
+    <h2>Importar / Exportar</h2>
+    <button id="exportJSON">Exportar JSON</button>
+    <button id="exportCSV">Exportar CSV</button>
+    <input type="file" id="importFile" accept=".json,.csv">
+  </section>
+
+  <section id="seed">
+    <button id="seedData">Seed de Teste</button>
+  </section>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
